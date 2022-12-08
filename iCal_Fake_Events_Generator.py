@@ -1,4 +1,10 @@
-﻿import datetime
+####################################################################################################
+#
+#   THE PYTHON VERSION OF THIS SCRIPT IS STILL A WORK-IN-PROGRESS. DO NOT USE.
+#
+####################################################################################################
+
+import datetime
 
 file_location = "/Users/zylai/Desktop"
 break_length_options = [-90,-60,-30,0,0,0,15,15,15,30,30,60,90]
