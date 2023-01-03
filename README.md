@@ -4,6 +4,8 @@ Tired of getting pulled into pointless meetings at work? This tool generates rea
 
 ### Python version coming soon!
 
+![outlook](https://user-images.githubusercontent.com/40312846/210455165-70c004da-a926-4aa5-9c10-1769dac9724c.png)
+
 ## Features
 - Fake events generated look just like a normal busy schedule
     - Events are of various lengths and sometimes overlap
