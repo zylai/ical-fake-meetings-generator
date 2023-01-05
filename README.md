@@ -34,9 +34,13 @@ Enter your start time in 24-hour format without colons (ex: 0830): 0800
 Enter your end time in 24-hour format without colons (ex: 1700): 1700
 ```
 
-3. A file named `calendar.ics` will be created on your desktop. Preview this file and make sure it is to your liking. If not, simply delete the file and run the script again.
+3. A file named `calendar.ics` will be created on your desktop (PowerShell version) or home directory (Python version). Preview this file and make sure it is to your liking. If not, simply delete the file and run the script again.
 
 4. Import the `calendar.ics` file to your calendar.
+
+## To-Do
+
+Update PowerShell version so the UTC conversion is only performed once right after receiving user input and outside the while loop
 
 ## Disclaimer
 
