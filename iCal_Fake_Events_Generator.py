@@ -26,7 +26,7 @@ while True:
 
 while True:
 	user_input_month = input("Enter the month you'd like to create junk events for: ")
-	if bool(re.search("(^[1-9]$)|(^1[0-2]$)", user_input_month)):	# Disallow leading zero in month as `datetime` does not allow it
+	if bool(re.search("^(0?[1-9]|1[012])$", user_input_month)):
 		break
 	print("\033[91mPlease enter a valid month between 1 to 12\033[0m")
 
@@ -73,8 +73,8 @@ for day in range(1, days_in_month + 1):
 	if ((day_date.strftime('%A') == "Saturday") or (day_date.strftime('%A') == "Sunday")):
 		continue
 
-	day_begin_utc = datetime.strptime("" + user_input_year + user_input_month + str(day).zfill(2) + day_begin_hour + day_begin_minute + "00" + utc_offset, '%Y%m%d%H%M%S%z').utctimetuple()
-	day_end_utc = datetime.strptime("" + user_input_year + user_input_month + str(day).zfill(2) + day_end_hour + day_end_minute + "00" + utc_offset, '%Y%m%d%H%M%S%z').utctimetuple()
+	day_begin_utc = datetime.strptime("" + user_input_year + user_input_month.zfill(2) + str(day).zfill(2) + day_begin_hour + day_begin_minute + "00" + utc_offset, '%Y%m%d%H%M%S%z').utctimetuple()
+	day_end_utc = datetime.strptime("" + user_input_year + user_input_month.zfill(2) + str(day).zfill(2) + day_end_hour + day_end_minute + "00" + utc_offset, '%Y%m%d%H%M%S%z').utctimetuple()
 
 	day_begin = datetime(day_begin_utc.tm_year, day_begin_utc.tm_mon, day_begin_utc.tm_mday, day_begin_utc.tm_hour, day_begin_utc.tm_min, 0)
 	day_end = datetime(day_end_utc.tm_year, day_end_utc.tm_mon, day_end_utc.tm_mday, day_end_utc.tm_hour, day_end_utc.tm_min, 0)
