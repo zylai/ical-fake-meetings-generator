@@ -1,13 +1,8 @@
-####################################################################################################
-#
-#   THE PYTHON VERSION OF THIS SCRIPT IS STILL A WORK-IN-PROGRESS. DO NOT USE.
-#
-####################################################################################################
-
 from pathlib import Path
 import os.path
 from os import path
 import sys
+from calendar import monthrange
 from datetime import datetime,timedelta
 import uuid
 import random
@@ -59,26 +54,36 @@ day_begin_minute = user_input_begin_time[2:4]
 day_end_hour = user_input_end_time[0:2]
 day_end_minute = user_input_end_time[2:4]
 
-days_in_month = monthrange(user_input_year, user_input_month)[1]
+days_in_month = monthrange(int(user_input_year), int(user_input_month))[1]
+
+utc_offset = str(datetime.now().astimezone().isoformat())[26:33]
 
 calendar_template_begin = """BEGIN:VCALENDAR
 PRODID:-//ZYLAI//iCal Fake Events Generator//EN
 VERSION:2.0
-METHOD:PUBLISH"""
+METHOD:PUBLISH
+"""
 
 ics_file = open(file_location, "a")
 ics_file.write(calendar_template_begin)
 
 for day in range(1, days_in_month + 1):
-	date = datetime(user_input_year, user_input_month, day)
+	day_date = datetime(int(user_input_year), int(user_input_month), day)
 
-	if ((date.strftime('%A') == "Saturday") or (date.strftime('%A') == "Sunday")):
+	if ((day_date.strftime('%A') == "Saturday") or (day_date.strftime('%A') == "Sunday")):
 		continue
 
-	day_begin = datetime(user_input_year, user_input_month, day, day_begin_hour, day_begin_minute)
-	day_end = datetime(user_input_year, user_input_month, day, day_end_hour, day_end_minute)
+	day_begin_utc = datetime.strptime("" + user_input_year + user_input_month + str(day).zfill(2) + day_begin_hour + day_begin_minute + "00" + utc_offset, '%Y%m%d%H%M%S%z').utctimetuple()
+	day_end_utc = datetime.strptime("" + user_input_year + user_input_month + str(day).zfill(2) + day_end_hour + day_end_minute + "00" + utc_offset, '%Y%m%d%H%M%S%z').utctimetuple()
+
+	day_begin = datetime(day_begin_utc.tm_year, day_begin_utc.tm_mon, day_begin_utc.tm_mday, day_begin_utc.tm_hour, day_begin_utc.tm_min, 0)
+	day_end = datetime(day_end_utc.tm_year, day_end_utc.tm_mon, day_end_utc.tm_mday, day_end_utc.tm_hour, day_end_utc.tm_min, 0)
 
 	event_end = day_begin
+
+	print(day_begin)
+	print(day_end)
+	print(event_end)
 
 	while (event_end < day_end):
 		break_length = timedelta(minutes = random.choice(break_length_options))
@@ -87,17 +92,21 @@ for day in range(1, days_in_month + 1):
 		event_length = timedelta(minutes = random.choice(event_length_options))
 		event_end = event_begin + event_length
 
+		print(event_begin)
+		print(event_end)
+
 		event_template = """BEGIN:VEVENT
 CLASS:PRIVATE
-DESCRIPTION:\n
-DTSTAMP:$((Get-Date).ToUniversalTime().ToString("yyyyMMddTHHmmssZ"))
-DTSTART:$($EventBegin.ToUniversalTime().ToString("yyyyMMddTHHmm00Z"))
-DTEND:$($EventEnd.ToUniversalTime().ToString("yyyyMMddTHHmm00Z"))
+DESCRIPTION:
+DTSTAMP:{}
+DTSTART:{}
+DTEND:{}
 PRIORITY:9
 SEQUENCE:0
 TRANSP:OPAQUE
 UID:{}
-END:VEVENT""".format(, , , str(uuid.uuid4()))
+END:VEVENT
+""".format(datetime.utcnow().strftime('%Y%m%dT%H%M%SZ'), event_begin.strftime('%Y%m%dT%H%M%SZ'), event_end.strftime('%Y%m%dT%H%M%SZ'), str(uuid.uuid4()))
 
 		ics_file.write(event_template)
 
