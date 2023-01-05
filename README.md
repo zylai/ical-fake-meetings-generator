@@ -2,7 +2,7 @@
 
 Tired of getting pulled into pointless meetings at work? This tool generates realistic-looking fake meetings/events that you can import into your Outlook/Apple/Google calendar to give the impression of how busy you are and prevent people from booking your calendar.
 
-### Python version coming soon!
+### Available in Python and PowerShell!
 
 ![outlook](https://user-images.githubusercontent.com/40312846/210455165-70c004da-a926-4aa5-9c10-1769dac9724c.png)
 
