@@ -81,19 +81,12 @@ for day in range(1, days_in_month + 1):
 
 	event_end = day_begin
 
-	print(day_begin)
-	print(day_end)
-	print(event_end)
-
 	while (event_end < day_end):
 		break_length = timedelta(minutes = random.choice(break_length_options))
 		event_end = event_end + break_length
 		event_begin = event_end
 		event_length = timedelta(minutes = random.choice(event_length_options))
 		event_end = event_begin + event_length
-
-		print(event_begin)
-		print(event_end)
 
 		event_template = """BEGIN:VEVENT
 CLASS:PRIVATE
