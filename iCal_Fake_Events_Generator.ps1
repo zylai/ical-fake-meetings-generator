@@ -114,6 +114,6 @@ END:VCALENDAR
 
 echo $CalendarTemplateEnd >> $FileLocation
 
-echo "iCalendar file generated successfully and has been saved to: $FileLocation"
+Write-Host "iCalendar file generated successfully and has been saved to: $FileLocation" -ForegroundColor Green
 
 exit 0
