@@ -1,4 +1,6 @@
-﻿$FileLocation = "$([Environment]::GetFolderPath("Desktop"))\calendar.ics"
+##### User-definable options, start editing here #####
+
+$FileLocation = "$([Environment]::GetFolderPath("Desktop"))\calendar.ics"
 $BreakLengthOptions = -90,-60,-30,0,0,0,15,15,15,30,30,60,90
 $EventLengthOptions = 15,15,30,30,30,30,30,45,45,60,60,60,60,60,60,60,60,90,90,90,120,120,120,240
 
@@ -12,7 +14,8 @@ METHOD:PUBLISH
 "@
 
 if (Test-Path -Path $FileLocation -PathType Leaf) {
-    Write-Host "$FileLocation already exists. Aborting..." -ForegroundColor Red
+    Write-Host "An existing iCalendar file is already at: $FileLocation" -ForegroundColor Red
+    Write-Host "Delete this file to generate another one. Aborting..." -ForegroundColor Red
     exit 1
 }
 
@@ -110,3 +113,7 @@ END:VCALENDAR
 "@
 
 echo $CalendarTemplateEnd >> $FileLocation
+
+echo "iCalendar file generated successfully and has been saved to: $FileLocation"
+
+exit 0
