@@ -8,6 +8,8 @@ import uuid
 import random
 import re
 
+##### User-definable options, start editing here #####
+
 file_location = str(Path.home()) + "/calendar.ics"
 break_length_options = [-90,-60,-30,0,0,0,15,15,15,30,30,60,90]
 event_length_options = [15,15,30,30,30,30,30,45,45,60,60,60,60,60,60,60,60,90,90,90,120,120,120,240]
@@ -15,7 +17,8 @@ event_length_options = [15,15,30,30,30,30,30,45,45,60,60,60,60,60,60,60,60,90,90
 ##### Start of script, stop editing here #####
 
 if path.exists(file_location):
-	print("\033[91m" + file_location + " already exists. Aborting..." + "\033[0m")
+	print("\033[91mAn existing iCalendar file is already at: " + file_location + "\033[0m")
+	print("\033[91mDelete this file to generate another one. Aborting...\033[0m")
 	sys.exit(1)
 
 while True:
@@ -108,3 +111,7 @@ calendar_template_end = "END:VCALENDAR"
 ics_file.write(calendar_template_end)
 
 ics_file.close
+
+print("iCalendar file generated successfully and has been saved to: " + file_location)
+
+sys.exit(0)
