@@ -2,7 +2,7 @@
 
 Tired of getting pulled into pointless meetings at work? This tool generates realistic-looking fake meetings/events that you can import into your Outlook/Apple/Google calendar to give the impression of how busy you are and prevent people from booking your calendar.
 
-### Available in Python and PowerShell!
+### Now available in Python and PowerShell!
 
 ![outlook](https://user-images.githubusercontent.com/40312846/210455165-70c004da-a926-4aa5-9c10-1769dac9724c.png)
 
@@ -21,8 +21,8 @@ The `.ics` file this tool produces adheres to the iCalendar specifications, and 
 ## Instructions
 
 1. Execute the script
-    - Windows: import the code into PowerShell ISE
-    - macOS: [install PowerShell](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-macos) (available via Homebrew), then execute `pwsh /path/to/file.ps1`
+    - For Windows users without administrator privileges on their machines, copy and paste the `.ps1` code into PowerShell ISE and execute
+    - PowerShell is available for macOS users via Homebrew if you don't have or want to use Python
 
 2. You'll be prompted to enter the year and month you'd like to generate fake events for, as well as your the times you usually start and end your work day. The times must be entered in 24-hour format without colons (for example: 0730, 1700).
 
@@ -32,6 +32,7 @@ Enter the year you'd like to create junk events for: 2022
 Enter the month you'd like to create junk events for: 11
 Enter your start time in 24-hour format without colons (ex: 0830): 0800
 Enter your end time in 24-hour format without colons (ex: 1700): 1700
+iCalendar file generated successfully and has been saved to: /path/to/file
 ```
 
 3. A file named `calendar.ics` will be created on your desktop (PowerShell version) or home directory (Python version). Preview this file and make sure it is to your liking. If not, simply delete the file and run the script again.
