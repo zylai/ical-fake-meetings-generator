@@ -112,6 +112,6 @@ ics_file.write(calendar_template_end)
 
 ics_file.close
 
-print("iCalendar file generated successfully and has been saved to: " + file_location)
+print("\033[92miCalendar file generated successfully and has been saved to: " + file_location + "\033[0m")
 
 sys.exit(0)
