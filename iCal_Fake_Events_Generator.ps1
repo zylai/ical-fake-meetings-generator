@@ -8,7 +8,7 @@ $EventLengthOptions = 15,15,30,30,30,30,30,45,45,60,60,60,60,60,60,60,60,90,90,9
 
 $CalendarTemplateBegin=@"
 BEGIN:VCALENDAR
-PRODID:-//ZYLAI//iCal Fake Events Generator//EN
+PRODID:-//ZY//iCal Fake Events Generator//EN
 VERSION:2.0
 METHOD:PUBLISH
 "@
