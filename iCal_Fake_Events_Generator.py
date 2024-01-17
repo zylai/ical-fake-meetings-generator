@@ -62,7 +62,7 @@ days_in_month = monthrange(int(user_input_year), int(user_input_month))[1]
 utc_offset = str(datetime.now().astimezone().isoformat())[26:33]
 
 calendar_template_begin = """BEGIN:VCALENDAR
-PRODID:-//ZYLAI//iCal Fake Events Generator//EN
+PRODID:-//ZY//iCal Fake Events Generator//EN
 VERSION:2.0
 METHOD:PUBLISH
 """
